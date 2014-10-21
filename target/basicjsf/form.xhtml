@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+
+	<h:form>
+		<p>
+			E-mail:<br />
+			<h:inputText value="#{customerController.email}" />
+		</p>
+		<p>
+			Password:<br />
+			<h:inputSecret value="#{customerController.password}" />
+		</p>
+		<p>
+			First Name:<br />
+			<h:inputText value="#{customerController.firstName}" />
+		</p>
+		<p>
+			Last Name:<br />
+			<h:inputText value="#{customerController.lastName}" />
+		</p>
+		<p>
+			Birth Date:<br />
+			<h:inputText value="#{customerController.birthDateInput}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText>
+		</p>
+		<p>
+			Mobile Phone:<br />
+			<h:inputText value="#{customerController.mobileNo}" />
+		</p>
+		<p>
+			Home Phone:<br />
+			<h:inputText value="#{customerController.homePhone}" />
+		</p>
+		</p>
+		<p>
+			Gender:
+			<h:selectOneRadio value="#{basicElementBean.gender}">
+				<f:selectItem itemValue="P" itemLabel="Pria" />
+				<f:selectItem itemValue="W" itemLabel="Wanita" />
+			</h:selectOneRadio>
+		</p>
+		<p>
+			Salutation:
+			<h:selectOneMenu value="#{basicElementBean.salutation}">
+				<f:selectItem itemValue="Dr." itemLabel="Dr." />
+				<f:selectItem itemValue="Mr." itemLabel="Mr." />
+				<f:selectItem itemValue="Mrs." itemLabel="Mrs." />
+			</h:selectOneMenu>
+		</p>
+		<hr />
+		<p>
+			Street:<br />
+			<h:inputText value="#{customerController.street}" />
+		</p>
+		<p>
+			City:<br />
+			<h:inputText value="#{customerController.city}" />
+		</p>
+		<p>
+			Postal Code:<br />
+			<h:inputText value="#{customerController.postalCode}" />
+		</p>
+		<h:commandButton action="#{customerController.save}" value="Save" />
+	</h:form>
+</body>
+</html>
