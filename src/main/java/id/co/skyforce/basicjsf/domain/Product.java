@@ -3,6 +3,7 @@ package id.co.skyforce.basicjsf.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +37,9 @@ public class Product implements Serializable {
 	// ManyToOne default-nya FetchType.EAGER
 	// OneToMany default-nya FetchType.LAZY
 	// @ManyToOne(fetch = FetchType.EAGER)
-	@ManyToOne(fetch = FetchType.LAZY)
+	// @ManyToOne(fetch = FetchType.LAZY) // Kalo pake ini, error saat akses
+	// list.xhtml?
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "category_id")
 	private Category category;
 

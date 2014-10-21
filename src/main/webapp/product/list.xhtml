@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+	<h:dataTable var="product" value="#{productListController.products}">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{product.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Kategori</f:facet>
+			<h:outputText value="#{product.category.name}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Nama</f:facet>
+			<h:link value="#{product.name}" outcome="form">
+				<f:param name="id" value="#{product.id}" />
+			</h:link>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Harga</f:facet>
+			<h:outputText value="#{product.price}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Stok</f:facet>
+			<h:outputText value="#{product.stock}" />
+		</h:column>
+	</h:dataTable>
+	<h:link value="Add New Product..." outcome="form" />
+</body>
+</html>
