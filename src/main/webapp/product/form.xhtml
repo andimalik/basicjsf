@@ -1,11 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head></h:head> 
-<body> 
-
-</body> 
+<h:head></h:head>
+<body>
+	<h:link value="Product List" outcome="list" />
+	<h:form>
+		<h:messages />
+		<h:inputHidden value="#{productController.product.id}"
+			converter="javax.faces.Long" />
+		<h:inputHidden value="#{productController.product.category.id}"
+			converter="javax.faces.Long" />
+		<p>
+			Product Name:<br />
+			<h:inputText value="#{productController.product.name}"
+				required="true" label="Product Name">
+				<f:validateLength maximum="20" />
+			</h:inputText>
+		</p>
+		<p>
+			Product Description:<br />
+			<h:inputText value="#{productController.product.description}"
+				required="true" label="Product Description">
+				<f:validateLength maximum="255" />
+			</h:inputText>
+		</p>
+		<p>
+			Price:<br />
+			<h:inputText value="#{productController.product.price}"
+				required="true" label="Price" converter="javax.faces.BigDecimal" />
+		</p>
+		<p>
+			Stock:<br />
+			<h:inputText value="#{productController.product.stock}"
+				required="true" label="Price" converter="javax.faces.Integer" />
+		</p>
+		<p>
+			Category:<br />
+			<h:selectOneMenu value="#{productController.product.category}">
+				<f:selectItems value="#{productController.categories}"
+					var="category" itemLabel="#{category.name}" itemValue="#{category}" />
+			</h:selectOneMenu>
+		</p>
+		<h:commandButton action="#{productController.save}" value="Save" />
+	</h:form>
+</body>
 </html>
